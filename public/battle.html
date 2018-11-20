@@ -11,11 +11,25 @@
       <h1>Pick Your Champion!</h1>
         <h2>Based on , only one artist can win. Choose wisely...</h2>
      
-        <input class="artists" type="text" name="artist1"/> vs
-        <input class="artists" type="text" name="artist2"/>
+    <form id="search-form" class="center">
+        <div class="space"> 
+        <input type="text" id="artist1" value="" class="form-artists" placeholder="Type an Artist Name"/>
+        <input type="submit" class="btn-secondary" value="Search" />
+            </div>
+        <div class="space">
+        <input type="text" id="artist2" value="" class="form-artists" placeholder="Type an Artist Name"/>
+        <input type="submit" class="btn-secondary" value="Search" />
+            </div>
+        <!--<br>
+        <input type="radio" name="radiobutton" value="myValue1">Criteria 1 <br>
+        <input type="radio" name="radiobutton" value="myValue2">Criteria 2-->
+    </form>
+    <div id="results"></div>
+        <div class="center">  
+     <button id="playAgain" class="btn btn-primary">Play Again</button>   
      
       </div>
-     
+     </div> 
     <div id="user-profile"></div>
     <script type="module" src="/js/pages/battle.js"></script>
     </body>
