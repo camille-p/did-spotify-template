@@ -23,9 +23,11 @@ h1 {
 #login-button, #playAgain {
 background-color: #262D31;
     color: #FABD29;
-    border-radius: 10px;
     border-color: #262D31;
     box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.4);
+}
+button {
+    border-radius: 10px;
 }
 
 #login {
@@ -57,6 +59,7 @@ justify-content: center;
 .space {
    padding: 50px;
 }
-input {
+input, .btn-secondary {
     font-size: 15px;
+    padding: 10px;
 }
