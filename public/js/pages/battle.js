@@ -7,7 +7,7 @@ const {access_token, state} = getHashParams();
 const storedState = localStorage.getItem(STATE_KEY);
 
 
-const outputTemplate = ({display_name, id, email, uri, external_urls, images, country}) =>`<h1>Logged in as </h1>
+const outputTemplate = ({display_name, id, email, uri, external_urls, images, country}) =>`<h2>Logged in as </h2>
   <div class="media">
     <div class="pull-left">
       <img class="media-object" width="150" src="">
@@ -65,10 +65,9 @@ const findArtist = () => {
   }, networkError => {
     console.log(networkError.message)
   })
-      .then(data => console.log(data))
-  
-
+      .then(data => console.log(data)) 
 }
+
 
 const displaySuggestions = (event) => {
   event.preventDefault();
@@ -78,39 +77,57 @@ const displaySuggestions = (event) => {
   findArtist();
 };
 
-submit.addEventListener('click', undeux);
 
-function undeux() {
-    console.log(123);
-}
 */
 
 
 
-/*const value = () => {
+/*const valueInput = () => {
     document.getElementById('button1').addEventListener('click', () => {
     const userInput1 = document.getElementById('artist1').value;
   });
 };*/
 
+document.getElementById('button1').addEventListener('click', getArtists); 
 
-function getUsers(){
-fetch('https://api.spotify.com/v1/artists/{id}')
-    .then((res) => res.json())
-    .then((data) => {
-    let responseField = '<h2>Users</h2>';
-    data.forEach(function(artists) {
-    responseField += `
-<div>
-    <h3>Name: ${artists.name}</h3>
-    <p>Followers: ${artists.followers.total}</p>
-</div>
-        `;        
+
+const divResults = document.getElementById('responseField');
+
+function getArtists(){
+    const userInput1 = document.getElementById('artist1').value;
+fetch('https://api.spotify.com/v1/search?q='+ userInput1 +'&type=artist&limit=1', {
+      headers: {
+        'Authorization': `Bearer ${access_token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+    divResults.innerHTML = data;
     });
-    document.getElementById('responseField').innerHTML= responseField;
-})
-}
+                             
+                             };
+
+                             
 
 
 
+
+
+
+
+/*document.getElementById('button2').addEventListener('click', getArtists2); 
+
+function getArtists2() {
+    const userInput2 = document.getElementById('artist2').value;
+fetch('https://api.spotify.com/v1/search?q='+ userInput2 +'&type=artist&limit=1', {
+      headers: {
+        'Authorization': `Bearer ${access_token}`
+      }
+    })
+    .then(res => res.json())
+    .then((data) => console.log(data));
+}*/
    
+document.getElementById('playAgain').addEventListener('click', function() {
+location.reload();
+})

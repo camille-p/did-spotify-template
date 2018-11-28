@@ -3,28 +3,30 @@
   <head>
     <title>Spotify Artist Battle Template</title>
     <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="css/reset.css"/>
-    <link type="text/css" rel="stylesheet" href="css/master.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/reset.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/master.css"/>
   </head>
   <body>
     <div class="container">
       <h1>Can You Guess The Winner?</h1>
         <h2>Based on their popularity, only one artist can win.</h2>
      
-    <form id="search-form" class="center">
+    <div id="search-form" class="center">
         <div class="space"> 
         <input type="text" id="artist1" value="" class="form-artists" placeholder="Type an Artist Name"/>
         <button id="button1" class="btn btn-secondary">Search</button>
         <div id="responseField"></div>
             </div>
+        
         <div class="space">
         <input type="text" id="artist2" value="" class="form-artists" placeholder="Type an Artist Name"/>
         <button id="button2" class="btn btn-secondary">Search</button>
             </div>
-    </form>
+        </div>
     <div id="results"></div>
         <div class="center">  
-     <button id="playAgain" class="btn btn-primary">Play Again</button>   
+    <button id="fight" class="btn btn-primary">Start Battle!</button>
+    <button id="playAgain" class="btn btn-primary">Play Again</button>   
      
       </div>
      </div> 
