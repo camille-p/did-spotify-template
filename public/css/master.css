@@ -43,6 +43,9 @@ h1, h2 {
 h2 {
     font-size: 30px;
 }
+h3 {
+    font-size: 25px;
+}
 
 #search-form {
     padding: 20px;
@@ -51,6 +54,7 @@ h2 {
 #playAgain, #fight {
     padding: 10px;
     font-size: 20px;
+    margin: 10px;
 }
 .center{
 display: flex; 
@@ -62,4 +66,8 @@ justify-content: center;
 input, .btn-secondary {
     font-size: 15px;
     padding: 10px;
+}
+img {
+    margin: 15px 0;
+    width: 175px;
 }

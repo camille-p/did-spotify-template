@@ -11,6 +11,10 @@ const getUserData = (access_token) => {
 };
 
 
+
+                             
+                            
+
 export default {
-  getUserData  
+  getUserData
 }
