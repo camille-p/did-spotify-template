@@ -7,6 +7,8 @@ html {
 
 body {
     background-color: #FABD29;
+    color: #262D31;
+    padding: 15px;
 }
 
 h1 {
@@ -20,7 +22,7 @@ h1 {
     font-size: 30px; 
 }
 
-#login-button, #playAgain {
+.btn-primary {
 background-color: #262D31;
     color: #FABD29;
     border-color: #262D31;
@@ -30,20 +32,13 @@ button {
     border-radius: 10px;
 }
 
-#login {
+#login, h1, h2 {
     text-align: center;
 }
 
-h1, h2 {
-    color: #262D31;
-    padding: 15px;
-    text-align: center;
-}
 
-h2 {
-    font-size: 30px;
-}
-h3 {
+
+h2, h3 {
     font-size: 25px;
 }
 
@@ -75,3 +70,5 @@ span {
     font-weight: 900;
     text-transform: uppercase;
 }
+
+
