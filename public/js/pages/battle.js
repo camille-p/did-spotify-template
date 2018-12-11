@@ -54,9 +54,9 @@ const response = await fetch(`https://api.spotify.com/v1/search?q=${userInput1}/
     });
 const data = await response.json();
    for (let i = 0; i < data.artists.items.length; i++) {
-     firstArtist.innerHTML = `<img src="${data.artists.items[i].images[i].url}"> <br> ${data.artists.items[i].name} has ${data.artists.items[i].followers.total} followers`;
+     firstArtist.innerHTML = `<img src="${data.artists.items[i].images[i].url}"> <br> <span>${data.artists.items[i].name}</span> has ${data.artists.items[i].followers.total} followers`;
    }
-   
+
                                                    
 } catch (err){ 
     console.log(err);
@@ -68,41 +68,6 @@ const data = await response.json();
 
 
 
-
-const followers1 = () => {
-    const userInput1 = document.getElementById('artist1').value;
-fetch(`https://api.spotify.com/v1/search?q=${userInput1}&type=artist&limit=1`, {
-      headers: {
-        'Authorization': `Bearer ${access_token}`
-      }
-    })
-.then(res => res.json())
-.then(data => data.artists.items[0].popularity)
-      }
-
-button1.addEventListener('click', followers1);
-
-//console.log(followers1.popularity)
-
-
-
-/*const followers2 = () => {
-    const userInput2 = document.getElementById('artist2').value;
-fetch(`https://api.spotify.com/v1/search?q=${userInput2}&type=artist&limit=1`, {
-      headers: {
-        'Authorization': `Bearer ${access_token}`
-      }
-    })
-.then(res => res.json())
-.then(data => `${data.artists.items[0].followers.total}`)
- 
-      }
-
-
-button1.addEventListener('click', followers2);
-
-*/
-
                              
 async function getArtists2() {
 try {
@@ -113,11 +78,9 @@ const response = await fetch(`https://api.spotify.com/v1/search?q=${userInput2}/
       }
     });
 const data = await response.json();
-   for (let i = 0; i < data.artists.items.length; i++) {
-     secondArtist.innerHTML = `<img src="${data.artists.items[i].images[i].url}"> <br> ${data.artists.items[i].name} has ${data.artists.items[i].followers.total} followers`;
-   }
-   
-                                                   
+     secondArtist.innerHTML = `<img src="${data.artists.items[0].images[0].url}"> <br> <span>${data.artists.items[0].name}</span> has ${data.artists.items[0].followers.total} followers`;
+
+
 } catch (err){ 
     console.log(err);
  }
@@ -126,20 +89,52 @@ const data = await response.json();
 
 document.getElementById('button2').addEventListener('click', getArtists2);
 
+async function artistsPop() {
+try {
+const userInput2 = document.getElementById('artist2').value;
+const response2 = await fetch(`https://api.spotify.com/v1/search?q=${userInput2}/&type=artist&limit=1`, {
+      headers: {
+        'Authorization': `Bearer ${access_token}`
+      }
+    });
+const data2 = await response2.json();
+let pop2 = `${data2.artists.items[0].popularity}`
+let musicianName2 = `${data2.artists.items[0].name}`
+function displayInfo2() {
+     return pop2, musicianName2;
+}
+   displayInfo2();
+
+const userInput1 = document.getElementById('artist1').value;
+const response1 = await fetch(`https://api.spotify.com/v1/search?q=${userInput1}/&type=artist&limit=1`, {
+      headers: {
+        'Authorization': `Bearer ${access_token}`
+      }
+    });
+const data1 = await response1.json();
+let pop1 = `${data1.artists.items[0].popularity}`
+let musicianName1 = `${data1.artists.items[0].name}`
+function displayInfo1() {
+     return pop1, musicianName1;
+}
+   displayInfo1();
+
+    if (pop1 > pop2) {
+    console.log(musicianName1, pop1)
+}    else if (pop2 > pop1) {
+    console.log(musicianName2, pop2)
+} else if (pop2 === pop1) {
+    console.log("Both win!");
 
 
+}
+} catch (err){ 
+    console.log(err);
+ }
+}
 
 playAgain.addEventListener('click', () => location.reload())
 
-const fight = () => {
-if (followers1 > followers2) {
-    console.log(`${name1} has won with ${followers1} followers!`)
-}    else if (followers2 > followers1) {
-    console.log(`${name2} has won with ${followers2} followers!`)
-} else if (followers1 === followers2) {
-    console.log("Both win!");
-}
-}
 
         
-document.getElementById('fight').addEventListener('click', fight);
+document.getElementById('fight').addEventListener('click', artistsPop);

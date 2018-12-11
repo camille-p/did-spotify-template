@@ -71,3 +71,7 @@ img {
     margin: 15px 0;
     width: 175px;
 }
+span {
+    font-weight: 900;
+    text-transform: uppercase;
+}
