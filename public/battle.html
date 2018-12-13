@@ -12,36 +12,38 @@
     
   <body>
     <div class="container">
+       
       <h1>Can You Guess The Winner?</h1>
-        <h2>Based on their popularity, only one artist can win.</h2>
-     
+        <h2>Based on their popularity or followers, only one artist can win.</h2>
+      <div id="displayResults">
     <div id="search-form" class="center">
         
         <div class="space"> 
         <input type="text" id="artist1" value="" class="form-artists" placeholder="Type an Artist Name"/>
-        <button id="button1" class="btn-secondary">Search</button>
         <div id="firstArtist"><ul></ul></div>
             </div>
         
         <div class="space">
         <input type="text" id="artist2" value="" class="form-artists" placeholder="Type an Artist Name"/>
-        <button id="button2" class="btn-secondary">Search</button>
             <div id="secondArtist"></div>
             </div>
         
         </div>
-     
-        <div class="center">  
-    <button id="fight" class="btn-primary">Start Battle!</button>
-            </div>
-        
+        <div class="center">
+            <h3>Select a Criteria to Display Results!</h3>
+        </div> 
+        <div class="center">
+        <input type="radio" name="radiobutton" value="Popularity" class="radiobutton" id="popularity"><span>Popularity</span>
+        <input type="radio" name="radiobutton" value="Followers" class="radiobutton" id="followers"><span>Followers </span>  
+                
+        </div>
+  
+        </div>
              <div class="center">    
-    <div id="results">
-        <div id= "modalBox">
-
-        </div>
-        <button id="playAgain" class="btn-primary">Play Again</button>  
-        </div>
+    
+        
+        <div id="center-btn"><button id="playAgain" class="btn-primary">Play Again</button></div>  
+        
         </div>
   
      </div> 

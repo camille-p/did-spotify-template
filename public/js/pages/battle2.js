@@ -28,35 +28,32 @@ if (!access_token || (state == null || state !== storedState)) {
   });
 }
 
-
+const results = document.getElementById('results');
 const firstArtist = document.getElementById('firstArtist');
 const secondArtist = document.getElementById('secondArtist');
 const playAgain = document.getElementById('playAgain');
-const input = document.querySelectorAll('.form-artists');
+const button1 = document.getElementById('button1');
+const input = document.querySelector('form-artists')
+const artistTemplate = (data) => `<div><img src="${data.images[0].url}"> <br> <p><span>${data.name}</span></p></div>`
 
-//SEARCH FOR ARTIST 1
-async function getArtists() {
-try {
-const userInput1 = document.getElementById('artist1').value;
-const response = await fetch(`https://api.spotify.com/v1/search?q=${userInput1}/&type=artist&limit=1`, {
-      headers: {
-        'Authorization': `Bearer ${access_token}`
-      }
-    });
-const data = await response.json();
-     firstArtist.innerHTML = `<img src="${data.artists.items[0].images[0].url}"> <br> <p><span>${data.artists.items[0].name}</span></p>`;                                                   
-} catch (err){ 
-    console.log(err);
- }
- 
-}
-
-
-input[0].addEventListener('keypress', () => {
+input.addEventListener('keypress', (event) => {
 if (event.keyCode === 13) {
-getArtists();
+ const currentInput = event.target;   
 }
 })
+
+//SEARCH FOR ARTIST 1
+if (!access_token || (state == null || state !== storedState)) {
+ window.location = "/";
+} else {
+  SpotifyAPI.getArtist(access_token, currentInput.value).then(data => {
+  firstArtist.innerHTML = artistTemplate(data);                                                   
+} 
+                                                               )
+}
+
+ button1.addEventListener('click', getArtists); 
+
 
 
 // SEARCH FOR ARTIST 2                             
@@ -75,12 +72,8 @@ const data = await response.json();
  }
 }
 
+document.getElementById('button2').addEventListener('click', getArtists2);
 
-input[1].addEventListener('keypress', () => {
-if (event.keyCode === 13) {
-getArtists2();
-}
-})
 
 
 // MAKE THEM FIGHT!
@@ -118,11 +111,11 @@ function displayInfo2() {
    displayInfo2();
  // THE BATTLE   
     if (pop1 > pop2) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <br> <p><span>${musicianName1}</span> wins with a popularity of ${pop1}/100 <br> Unfortunately, <span>${musicianName2}</span> loses with a popularity of only ${pop2}/100</p></div>`;
+    modalBox.innerHTML = `<div class= "resultats"><img src="${musicianPicture1}"> <br> <p>Yay! <span>${musicianName1}</span> won with a popularity of ${pop1}/100 <br> Unfortunately, <span>${musicianName2}</span> lost with a popularity of only ${pop2}/100</p></div>`;
 }    else if (pop2 > pop1) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture2}"> <br> <p><span>${musicianName2}</span> wins with a popularity of ${pop2}/100 <br> Unfortunately, <span>${musicianName1}</span> loses with a popularity of only ${pop1}/100</p></div>`;
+    modalBox.innerHTML = `<div class= "resultats"><img src="${musicianPicture2}"> <br> <p>Yay! <span>${musicianName2}</span> won with a popularity of ${pop2}/100 <br> Unfortunately, <span>${musicianName1}</span> lost with a popularity of only ${pop1}/100</p></div>`;
 } else if (pop2 === pop1) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <img src="${musicianPicture2}"> <br> <p>Yay! Both win with a popularity of ${pop2}/100</p></div>`;
+    modalBox.innerHTML = `<div class= "resultats"><img src="${musicianPicture1}"> <img src="${musicianPicture2}"> <br> <p>Yay! Both win with a popularity of ${pop2}/100</p></div>`;
 
 }
 }
@@ -133,8 +126,8 @@ function displayInfo2() {
 }
 
 
-//const theBattle = document.getElementById('fight').addEventListener('click', artistsPop);
-document.getElementById('popularity').addEventListener('click', artistsPop);
+const theBattle = document.getElementById('fight').addEventListener('click', artistsPop);
+document.getElementById('popularity').addEventListener('click', theBattle);
 
 
 // MAKE THEM FIGHT!
@@ -172,11 +165,11 @@ function displayInfo2() {
    displayInfo2();
  // THE BATTLE   
     if (followers1 > followers2) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <br> <p><span>${musicianName1}</span> wins with ${followers1} followers! <br> Unfortunately, <span>${musicianName2}</span> loses with only ${followers2} followers</p></div>`;
+    modalBox.innerHTML = `<div class= "resultats"><img src="${musicianPicture1}"> <br> <p>Yay! <span>${musicianName1}</span> won with ${followers1} followers! <br> Unfortunately, <span>${musicianName2}</span> lost with only ${followers2} followers</p></div>`;
 }    else if (followers2 > followers1) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture2}"> <br> <p><span>${musicianName2}</span> wins with ${followers2} followers! <br> Unfortunately, <span>${musicianName1}</span> loses with only ${followers1} followers</p></div>`;
+    modalBox.innerHTML = `<div class= "resultats"><img src="${musicianPicture2}"> <br> <p>Yay! <span>${musicianName2}</span> won with ${followers2} followers! <br> Unfortunately, <span>${musicianName1}</span> lost with only ${followers1} followers</p></div>`;
 } else if (followers2 === followers1) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <img src="${musicianPicture2}"> <br> <p>Yay! Both win with ${followers2} followers</p></div>`;
+    modalBox.innerHTML = `<div class= "resultats"><img src="${musicianPicture1}"> <img src="${musicianPicture2}"> <br> <p>Yay! Both win with ${followers2} followers</p></div>`;
 
 }
 }
@@ -186,8 +179,8 @@ function displayInfo2() {
  }
 }
 
-//const theFight = document.getElementById('fight').addEventListener('click', artistsFollowers);
-document.getElementById('followers').addEventListener('click', artistsFollowers);
+const theFight = document.getElementById('fight').addEventListener('click', artistsFollowers);
+document.getElementById('followers').addEventListener('click', theFight);
 
 
 // CLEAR TO PLAY AGAIN
