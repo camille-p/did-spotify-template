@@ -37,14 +37,14 @@ const input = document.querySelectorAll('.form-artists');
 //SEARCH FOR ARTIST 1
 async function getArtists() {
 try {
-const userInput1 = document.getElementById('artist1').value;
+const userInput1 = input[0].value;
 const response = await fetch(`https://api.spotify.com/v1/search?q=${userInput1}/&type=artist&limit=1`, {
       headers: {
         'Authorization': `Bearer ${access_token}`
       }
     });
 const data = await response.json();
-     firstArtist.innerHTML = `<img src="${data.artists.items[0].images[0].url}"> <br> <p><span>${data.artists.items[0].name}</span></p>`;                                                   
+     firstArtist.innerHTML = `<img src="${data.artists.items[0].images[0].url}"> <br> <p style = "text-align: center;"><span>${data.artists.items[0].name}</span></p>`;                                                   
 } catch (err){ 
     console.log(err);
  }
@@ -62,14 +62,14 @@ getArtists();
 // SEARCH FOR ARTIST 2                             
 async function getArtists2() {
 try {
-const userInput2 = document.getElementById('artist2').value;
+const userInput2 = input[1].value;
 const response = await fetch(`https://api.spotify.com/v1/search?q=${userInput2}/&type=artist&limit=1`, {
       headers: {
         'Authorization': `Bearer ${access_token}`
       }
     });
 const data = await response.json();
-     secondArtist.innerHTML = `<img src="${data.artists.items[0].images[0].url}"> <br> <p><span>${data.artists.items[0].name}</span></p>`;
+     secondArtist.innerHTML = `<img src="${data.artists.items[0].images[0].url}"> <br> <p style = "text-align: center;"><span>${data.artists.items[0].name}</span></p>`;
 } catch (err){ 
     console.log(err);
  }
@@ -87,7 +87,7 @@ getArtists2();
 async function artistsPop() {
 try {
 // INFO ABOUT ARTIST 1
-const userInput1 = document.getElementById('artist1').value;
+const userInput1 = input[0].value;
 const response1 = await fetch(`https://api.spotify.com/v1/search?q=${userInput1}/&type=artist&limit=1`, {
       headers: {
         'Authorization': `Bearer ${access_token}`
@@ -102,7 +102,7 @@ function displayInfo1() {
 }
    displayInfo1();
 // INFO ABOUT ARTIST 2    
-const userInput2 = document.getElementById('artist2').value;
+const userInput2 = input[1].value;
 const response2 = await fetch(`https://api.spotify.com/v1/search?q=${userInput2}/&type=artist&limit=1`, {
       headers: {
         'Authorization': `Bearer ${access_token}`
@@ -141,7 +141,7 @@ document.getElementById('popularity').addEventListener('click', artistsPop);
 async function artistsFollowers() {
 try {
 // INFO ABOUT ARTIST 1
-const userInput1 = document.getElementById('artist1').value;
+const userInput1 = input[0].value;
 const response1 = await fetch(`https://api.spotify.com/v1/search?q=${userInput1}/&type=artist&limit=1`, {
       headers: {
         'Authorization': `Bearer ${access_token}`
@@ -156,7 +156,7 @@ function displayInfo1() {
 }
    displayInfo1();
 // INFO ABOUT ARTIST 2    
-const userInput2 = document.getElementById('artist2').value;
+const userInput2 = input[1].value;
 const response2 = await fetch(`https://api.spotify.com/v1/search?q=${userInput2}/&type=artist&limit=1`, {
       headers: {
         'Authorization': `Bearer ${access_token}`
