@@ -31,6 +31,13 @@ function searchArtist(query) {
     });
 }
 
+function youNeedTwoArtists() { 
+    if (artist1 === null || artist2 === null) {
+        alert('You need to pick 2 artists!')
+    };
+}
+
+
 //SEARCH FOR ARTIST 1
 async function getArtists() {
 try {
@@ -74,7 +81,7 @@ getArtists2();
 })
 
 
-// MAKE THEM FIGHT!
+// MAKE THEM FIGHT BY POPULARITY!
 async function artistsPop() {
 try {
 // INFO ABOUT ARTIST 1
@@ -110,6 +117,8 @@ function displayInfo2() {
 
  catch (err){ 
     console.log(err);
+    youNeedTwoArtists();
+ 
  }
 }
 
@@ -117,7 +126,7 @@ function displayInfo2() {
 document.getElementById('popularity').addEventListener('click', artistsPop);
 
 
-// MAKE THEM FIGHT!
+// MAKE THEM FIGHT BY FOLLOWERS!
 async function artistsFollowers() {
 try {
 // INFO ABOUT ARTIST 1
@@ -141,9 +150,9 @@ function displayInfo2() {
 }
    displayInfo2();
  // THE BATTLE   
-    if (followers1 > followers2) {
+    if (followers1 - followers2 > 0) {
     displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <br> <p><span>${musicianName1}</span> wins with ${followers1} followers! <br> Unfortunately, <span>${musicianName2}</span> loses with only ${followers2} followers</p></div>`;
-}    else if (followers2 > followers1) {
+}    else if (followers2 - followers1 > 0) {
     displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture2}"> <br> <p><span>${musicianName2}</span> wins with ${followers2} followers! <br> Unfortunately, <span>${musicianName1}</span> loses with only ${followers1} followers</p></div>`;
 } else if (followers2 === followers1) {
     displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <img src="${musicianPicture2}"> <br> <p>Yay! Both win with ${followers2} followers</p></div>`;
@@ -153,6 +162,7 @@ function displayInfo2() {
 
  catch (err){ 
     console.log(err);
+    youNeedTwoArtists();
  }
 }
 
@@ -161,4 +171,4 @@ document.getElementById('followers').addEventListener('click', artistsFollowers)
 
 
 // CLEAR TO PLAY AGAIN
-playAgain.addEventListener('click', () => location.reload())
+playAgain.addEventListener('click', () => location.reload());
