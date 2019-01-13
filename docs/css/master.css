@@ -70,6 +70,7 @@ input, .btn-secondary {
 img {
     margin: 15px 0;
     width: 185px;
+    border-radius: 50%;
 }
 span {
     font-weight: 900;
