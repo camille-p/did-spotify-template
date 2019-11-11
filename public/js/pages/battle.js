@@ -11,7 +11,7 @@ const secondArtist = document.getElementById('secondArtist');
 const playAgain = document.getElementById('playAgain');
 const input = document.querySelectorAll('.form-artists');
 
-const artistTemplate = (data) => `<img src="${data.artists.items[0].images[0].url}"> 
+const artistTemplate = (data) => `<img src="${data.artists.items[0].images[0].url}" class="breather"> 
     <br><p style = "text-align: center;"><span>${data.artists.items[0].name}</span></p>`
 
 
@@ -19,15 +19,15 @@ let artist1 = null;
 let artist2 = null;
 
 if (!access_token || (state == null || state !== storedState)) {
- window.location = "/";
+window.location = "/";
 } 
 
 
 function searchArtist(query) {
     return fetch(`https://api.spotify.com/v1/search?q=${query}/&type=artist&limit=1`, {
-      headers: {
+    headers: {
         'Authorization': `Bearer ${access_token}`
-      }
+    }
     });
 }
 
@@ -44,12 +44,12 @@ try {
 const userInput1 = input[0].value;
 const response = await searchArtist(userInput1);
 const data = await response.json();
-     firstArtist.innerHTML = artistTemplate(data);      
+    firstArtist.innerHTML = artistTemplate(data);      
     artist1 = data;
 } catch (err){ 
     console.log(err);
- }
- 
+}
+
 }
 
 
@@ -67,10 +67,10 @@ const userInput2 = input[1].value;
 const response = await searchArtist(userInput2);
 const data = await response.json();
     artist2 = data;
-     secondArtist.innerHTML = artistTemplate(data);
+    secondArtist.innerHTML = artistTemplate(data);
 } catch (err){ 
     console.log(err);
- }
+}
 }
 
 
@@ -91,9 +91,9 @@ let pop1 = `${data1.artists.items[0].popularity}`
 let musicianName1 = `${data1.artists.items[0].name}`
 let musicianPicture1 = `${data1.artists.items[0].images[0].url}`
 function displayInfo1() {
-     return pop1, musicianName1;
+    return pop1, musicianName1;
 }
-   displayInfo1();
+displayInfo1();
 // INFO ABOUT ARTIST 2    
 const userInput2 = input[1].value;
 const data2 = artist2;
@@ -101,25 +101,25 @@ let pop2 = `${data2.artists.items[0].popularity}`
 let musicianName2 = `${data2.artists.items[0].name}`
 let musicianPicture2 = `${data2.artists.items[0].images[0].url}`
 function displayInfo2() {
-     return pop2, musicianName2;
+    return pop2, musicianName2;
 }
-   displayInfo2();
- // THE BATTLE   
+displayInfo2();
+// THE BATTLE   
     if (pop1 > pop2) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <br> <p><span>${musicianName1}</span> wins with a popularity of ${pop1}/100 <br> Unfortunately, <span>${musicianName2}</span> loses with a popularity of only ${pop2}/100</p></div>`;
+    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <br> <p><span class="green">${musicianName1}</span> wins with a popularity of ${pop1}/100 <br> Unfortunately, <span class="green">${musicianName2}</span> loses with a popularity of only ${pop2}/100</p></div>`;
 }    else if (pop2 > pop1) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture2}"> <br> <p><span>${musicianName2}</span> wins with a popularity of ${pop2}/100 <br> Unfortunately, <span>${musicianName1}</span> loses with a popularity of only ${pop1}/100</p></div>`;
+    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture2}"> <br> <p><span class="green">${musicianName2}</span> wins with a popularity of ${pop2}/100 <br> Unfortunately, <span class="green">${musicianName1}</span> loses with a popularity of only ${pop1}/100</p></div>`;
 } else if (pop2 === pop1) {
     displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <img src="${musicianPicture2}"> <br> <p>Yay! Both win with a popularity of ${pop2}/100</p></div>`;
 
 }
 }
 
- catch (err){ 
+catch (err){ 
     console.log(err);
     youNeedTwoArtists();
- 
- }
+
+}
 }
 
 
@@ -136,9 +136,9 @@ let followers1 = `${data1.artists.items[0].followers.total}`
 let musicianName1 = `${data1.artists.items[0].name}`
 let musicianPicture1 = `${data1.artists.items[0].images[0].url}`
 function displayInfo1() {
-     return followers1, musicianName1;
+    return followers1, musicianName1;
 }
-   displayInfo1();
+displayInfo1();
 // INFO ABOUT ARTIST 2    
 const userInput2 = input[1].value;
 const data2 = artist2;
@@ -146,24 +146,24 @@ let followers2 = `${data2.artists.items[0].followers.total}`
 let musicianName2 = `${data2.artists.items[0].name}`
 let musicianPicture2 = `${data2.artists.items[0].images[0].url}`
 function displayInfo2() {
-     return followers2, musicianName2;
+    return followers2, musicianName2;
 }
-   displayInfo2();
- // THE BATTLE   
+displayInfo2();
+// THE BATTLE   
     if (followers1 - followers2 > 0) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <br> <p><span>${musicianName1}</span> wins with ${followers1} followers! <br> Unfortunately, <span>${musicianName2}</span> loses with only ${followers2} followers</p></div>`;
+    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <br> <p><span class="green">${musicianName1}</span> wins with ${followers1} followers! <br> Unfortunately, <span class="green">${musicianName2}</span> loses with only ${followers2} followers</p></div>`;
 }    else if (followers2 - followers1 > 0) {
-    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture2}"> <br> <p><span>${musicianName2}</span> wins with ${followers2} followers! <br> Unfortunately, <span>${musicianName1}</span> loses with only ${followers1} followers</p></div>`;
+    displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture2}"> <br> <p><span class="green">${musicianName2}</span> wins with ${followers2} followers! <br> Unfortunately, <span class="green">${musicianName1}</span> loses with only ${followers1} followers</p></div>`;
 } else if (followers2 === followers1) {
     displayResults.innerHTML = `<div class= "results"><img src="${musicianPicture1}"> <img src="${musicianPicture2}"> <br> <p>Yay! Both win with ${followers2} followers</p></div>`;
 
 }
 }
 
- catch (err){ 
+catch (err){ 
     console.log(err);
     youNeedTwoArtists();
- }
+}
 }
 
 
