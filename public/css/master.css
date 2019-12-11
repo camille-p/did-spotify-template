@@ -13,8 +13,9 @@ body {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 46px;
     margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 h1, h3 {
@@ -22,7 +23,7 @@ h1, h3 {
 }
 
 h2, h3 {
-    font-size: 20px;
+    font-size: 18px;
 }
 h2 {
     margin-top: 50px;
@@ -34,6 +35,7 @@ h3 {
 p {
     font-size: 18px;
     line-height: 20px;
+    padding: 10px;
 }
 h2, p {
     color: #fff;
@@ -54,7 +56,7 @@ button {
     border-radius: 7px;
 }
 
-#login, h1, h2, .results, #center-btn {
+#login, h1, h2, .results, #center-btn, p {
     text-align: center;
 }
 
@@ -99,4 +101,18 @@ span {
 }
 .green {
     color: #80ff4e;   
+}
+
+.flip {
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.credits {
+    text-align: right;
+    font-size: 14px;
+}
+a {
+    text-decoration: underline;
+    color: #fff
 }
