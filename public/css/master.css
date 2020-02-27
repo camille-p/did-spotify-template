@@ -56,7 +56,7 @@ button {
     border-radius: 7px;
 }
 
-#login, h1, h2, .results, #center-btn, p {
+#login, h1, h2, h3, .results, #center-btn, p {
     text-align: center;
 }
 
@@ -81,12 +81,13 @@ button {
 .breather {
     margin-top: 35px;
 }
-input, .btn-secondary {
+
+.space input, .btn-secondary {
     font-size: 15px;
     padding: 10px;
 }
 
-input {
+.space input {
     border-radius: 5px;
 }
 
@@ -95,6 +96,13 @@ img {
     width: 185px;
     border-radius: 50%;
 }
+#fighters {
+text-align: center;
+}
+#fighters img {
+    margin: 50px;
+}
+
 span {
     font-weight: 900;
     text-transform: uppercase;
@@ -132,7 +140,6 @@ a {
     }
     h3 {
         font-size: 16px;  
-        text-align: center;
     }
     p, .credits {
         font-size: 16px;
@@ -146,6 +153,7 @@ a {
     }
     .space {
         margin: auto; 
+        padding: 20px 20px 30px 20px;
     }
     .centerTwo {
     flex-direction: column;
@@ -153,5 +161,9 @@ a {
     }
     .popularArtist {
         padding: 15px 0px 15px 0px;
+    }
+    #fighters img {
+        width: 130px;
+        margin: 20px 0 20px 0;
     }
 } 
