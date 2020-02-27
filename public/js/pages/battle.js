@@ -54,7 +54,7 @@ const data = await response.json();
 
 
 input[0].addEventListener('keypress', () => {
-if (event.keyCode === 13) {
+if (event.keyCode === 13 || 9) {
 getArtists();
 }
 })
@@ -75,7 +75,7 @@ const data = await response.json();
 
 
 input[1].addEventListener('keypress', () => {
-if (event.keyCode === 13) {
+if (event.keyCode === 13 || 9) {
 getArtists2();
 }
 })
@@ -85,7 +85,7 @@ getArtists2();
 let popLoad;
 
 function loaderPop() {
-  popLoad = setTimeout(artistsPop, 150);
+  popLoad = setTimeout(artistsPop, 175);
 }
 
 
@@ -137,7 +137,7 @@ document.getElementById('popularity').addEventListener('click', loaderPop);
 let followLoad;
 
 function loaderFollowers() {
-  followLoad = setTimeout(artistsFollowers, 150);
+  followLoad = setTimeout(artistsFollowers, 175);
 }
 
 // MAKE THEM FIGHT BY FOLLOWERS!
