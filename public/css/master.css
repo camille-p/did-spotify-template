@@ -72,11 +72,12 @@ button {
 }
 .space {
     padding: 50px;
+    text-align: center;
 }
 .space p {
     font-size: 14px;
     text-align: left;
-    padding: 5px 0 0 0;
+    padding: 5px 0 0 2px;
 }
 .breather {
     margin-top: 35px;
@@ -100,7 +101,8 @@ img {
 text-align: center;
 }
 #fighters img {
-    margin: 50px;
+    margin: 25px 40px 10px 40px;
+    padding: 0;
 }
 
 span {
@@ -167,3 +169,4 @@ a {
         margin: 20px 0 20px 0;
     }
 } 
+

@@ -81,6 +81,14 @@ getArtists2();
 })
 
 
+// LOADER 
+let popLoad;
+
+function loaderPop() {
+  popLoad = setTimeout(artistsPop, 150);
+}
+
+
 // MAKE THEM FIGHT BY POPULARITY!
 async function artistsPop() {
 try {
@@ -123,8 +131,14 @@ catch (err){
 }
 
 
-document.getElementById('popularity').addEventListener('click', artistsPop);
+document.getElementById('popularity').addEventListener('click', loaderPop);
 
+// LOADER 
+let followLoad;
+
+function loaderFollowers() {
+  followLoad = setTimeout(artistsFollowers, 150);
+}
 
 // MAKE THEM FIGHT BY FOLLOWERS!
 async function artistsFollowers() {
@@ -167,7 +181,7 @@ catch (err){
 }
 
 
-document.getElementById('followers').addEventListener('click', artistsFollowers);
+document.getElementById('followers').addEventListener('click', loaderFollowers);
 
 
 // CLEAR TO PLAY AGAIN
