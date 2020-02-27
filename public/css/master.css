@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -22,14 +23,13 @@ h1, h3 {
     font-family: 'Press Start 2P';
 }
 
-h2, h3 {
-    font-size: 18px;
-}
 h2 {
     margin-top: 50px;
+    font-size: 20px;
 }
 h3 {
     margin-bottom: 20px;
+    font-size: 18px;
 }
 
 p {
@@ -66,12 +66,17 @@ button {
     margin-top: 35px;
 }
 
-.center{
+.center, .centerTwo{
     display: flex; 
     justify-content: center;
 }
 .space {
     padding: 50px;
+}
+.space p {
+    font-size: 14px;
+    text-align: left;
+    padding: 5px 0 0 0;
 }
 .breather {
     margin-top: 35px;
@@ -110,9 +115,43 @@ span {
 
 .credits {
     text-align: right;
-    font-size: 14px;
+    font-size: 18px;
+    padding-top: 35px;
 }
 a {
     text-decoration: underline;
     color: #fff
 }
+
+ @media screen and (max-width: 600px) {
+    h1 { 
+        font-size: 26px;
+    }
+    h2 {
+        font-size : 18px;
+    }
+    h3 {
+        font-size: 16px;  
+        text-align: center;
+    }
+    p, .credits {
+        font-size: 16px;
+    }
+    .credits {
+        text-align: center;
+    }
+    .center {
+        display: flex;
+        flex-direction: column;
+    }
+    .space {
+        margin: auto; 
+    }
+    .centerTwo {
+    flex-direction: column;
+    text-align: center;
+    }
+    .popularArtist {
+        padding: 15px 0px 15px 0px;
+    }
+} 
